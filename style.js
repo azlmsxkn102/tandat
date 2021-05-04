@@ -3369,6 +3369,19 @@
                                  be.strokeText(`\nReload~Time: ${_.animTime}`,_.x - f,_.y - d + _.scale + o.nameY+(31)),
                                  be.fillText(`\nReload~Time: ${_.animTime}`,_.x - f,_.y - d + _.scale + o.nameY+(31))
                                 )
+			  if(_.isPlayer&&_!=R&&(_.team!=R.team||!_.team)){//enemy tracers
+                            be.lineCap = "round";
+                            be.strokeStyle = "red";
+                            be.lineWidth = 3;
+                            be.beginPath();
+                            be.moveTo(R.x-f, R.y-d);
+                            be.lineTo(_.x-f, _.y-d);
+                            be.stroke();
+                            be.strokeStyle = nt;
+                                be.beginPath();
+                                be.arc(_.x-f, _.y-d, 20, Math.PI * 2, false);
+                                be.stroke();
+                          }
 							_.health > 0 && (o.healthBarWidth, be.fillStyle = rt, be.roundRect(_.x -
 									f - o.healthBarWidth - o.healthBarPad, _.y - d + _.scale + o.nameY,
 									2 * o.healthBarWidth + 2 * o.healthBarPad, 17, 8), be.fill(), be.fillStyle =
